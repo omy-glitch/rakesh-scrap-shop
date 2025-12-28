@@ -1,5 +1,4 @@
 // --- 1. FIREBASE CONFIGURATION ---
-// This connects your website to the database you created
 const firebaseConfig = {
   apiKey: "AIzaSyCsPjAtWNHEyhAe4RWL_PsOXMwt_SiehDc",
   authDomain: "rakesh-scrap-shop.firebaseapp.com",
@@ -16,86 +15,109 @@ if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 const database = firebase.database();
+const auth = firebase.auth(); // Initialize Auth
 
-// Default prices (used only if database is completely empty)
+// Default prices
 const defaultPrices = {
-    papers: 10,
-    books: 13,
-    cartoon: 12,
-    glass: 4,
-    iron: 20,
-    tin: 12,
-    aluminium: 120,
-    steel: 45,
-    carBat: 95,
-    bikeBat: 85,
-    plastic: 15
+    papers: 10, books: 13, cartoon: 12, glass: 4, iron: 20, tin: 12,
+    aluminium: 120, steel: 45, carBat: 95, bikeBat: 85, plastic: 15
 };
 
 let currentPrices = {};
-const ADMIN_PASSWORD = 'admin123'; // ⚠️ Note: This password is visible to anyone inspecting code.
 
-// --- 2. LISTEN FOR REAL-TIME UPDATES ---
-// This runs automatically whenever data changes in the database (on any device)
+// --- 2. LISTEN FOR DATA ---
 const pricesRef = database.ref('scrapPrices');
-
 pricesRef.on('value', (snapshot) => {
     const data = snapshot.val();
-    
     if (data) {
-        // If data exists in cloud, use it
         currentPrices = data;
-        console.log("Data received from cloud:", currentPrices);
     } else {
-        // If database is new, upload defaults
         currentPrices = defaultPrices;
         pricesRef.set(defaultPrices);
-        console.log("Setting default data.");
     }
-    
-    // Update the website text immediately
     updatePriceDisplays();
 });
 
+// --- 3. AUTHENTICATION STATE LISTENER ---
+// This checks if you are logged in whenever the page loads
+auth.onAuthStateChanged((user) => {
+    if (user) {
+        // User is signed in.
+        console.log("Admin is logged in:", user.email);
+        document.getElementById('adminPanel').style.display = 'block';
+        document.getElementById('editForm').style.display = 'block';
+        
+        // Hide the login inputs since we are already logged in
+        document.getElementById('adminPassword').style.display = 'none';
+        document.querySelector('button[onclick="loginAdmin()"]').style.display = 'none';
+        
+        loadCurrentPricesToInputs();
+    } else {
+        // User is signed out.
+        console.log("No admin logged in.");
+        document.getElementById('adminPanel').style.display = 'none';
+        document.getElementById('editForm').style.display = 'none';
+        
+        // Show login inputs again
+        document.getElementById('adminPassword').style.display = 'inline-block';
+        document.querySelector('button[onclick="loginAdmin()"]').style.display = 'inline-block';
+    }
+});
 
-// --- 3. ADMIN FUNCTIONS ---
+// --- 4. ADMIN FUNCTIONS ---
 
 function showAdminLogin() {
+    // Just show the panel container
     document.getElementById('adminPanel').style.display = 'block';
 }
 
 function closeAdminPanel() {
     document.getElementById('adminPanel').style.display = 'none';
-    document.getElementById('adminPassword').value = ''; 
-    document.getElementById('editForm').style.display = 'none'; 
 }
 
 function loginAdmin() {
     const password = document.getElementById('adminPassword').value;
-    if (password === ADMIN_PASSWORD) {
-        document.getElementById('editForm').style.display = 'block';
-        
-        // Load current prices into inputs so you can edit them
-        document.getElementById('papersPrice').value = currentPrices.papers;
-        document.getElementById('booksPrice').value = currentPrices.books;
-        document.getElementById('cartoonPrice').value = currentPrices.cartoon;
-        document.getElementById('glassPrice').value = currentPrices.glass;
-        document.getElementById('ironPrice').value = currentPrices.iron;
-        document.getElementById('tinPrice').value = currentPrices.tin;
-        document.getElementById('aluminiumPrice').value = currentPrices.aluminium;
-        document.getElementById('steelPrice').value = currentPrices.steel;
-        document.getElementById('carBatPrice').value = currentPrices.carBat;
-        document.getElementById('bikeBatPrice').value = currentPrices.bikeBat;
-        document.getElementById('plasticPrice').value = currentPrices.plastic;
+    const email = "admin@rakeshscrap.com"; // HARDCODE YOUR EMAIL HERE (This is safe to show)
+    
+    // Login with Firebase
+    auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            alert('Welcome back, Admin!');
+            // onAuthStateChanged will handle showing the UI
+        })
+        .catch((error) => {
+            alert('Login Failed: ' + error.message);
+        });
+}
 
-        alert('Logged in successfully!');
-    } else {
-        alert('Wrong password!');
-    }
+function logoutAdmin() {
+    auth.signOut().then(() => {
+        alert('Logged out!');
+        closeAdminPanel();
+    });
+}
+
+function loadCurrentPricesToInputs() {
+    document.getElementById('papersPrice').value = currentPrices.papers;
+    document.getElementById('booksPrice').value = currentPrices.books;
+    document.getElementById('cartoonPrice').value = currentPrices.cartoon;
+    document.getElementById('glassPrice').value = currentPrices.glass;
+    document.getElementById('ironPrice').value = currentPrices.iron;
+    document.getElementById('tinPrice').value = currentPrices.tin;
+    document.getElementById('aluminiumPrice').value = currentPrices.aluminium;
+    document.getElementById('steelPrice').value = currentPrices.steel;
+    document.getElementById('carBatPrice').value = currentPrices.carBat;
+    document.getElementById('bikeBatPrice').value = currentPrices.bikeBat;
+    document.getElementById('plasticPrice').value = currentPrices.plastic;
 }
 
 function savePrices() {
-    // Create an object with the new values from the inputs
+    // Safety: Check if user is actually logged in before trying to save
+    if (!auth.currentUser) {
+        alert("You must be logged in to save!");
+        return;
+    }
+
     const newPrices = {
         papers: parseInt(document.getElementById('papersPrice').value) || 0,
         books: parseInt(document.getElementById('booksPrice').value) || 0,
@@ -110,24 +132,12 @@ function savePrices() {
         plastic: parseInt(document.getElementById('plasticPrice').value) || 0
     };
 
-    // --- SEND TO CLOUD DATABASE ---
     pricesRef.set(newPrices)
-        .then(() => {
-            alert('Prices updated online! Check your other phone to see the change.');
-        })
-        .catch((error) => {
-            alert('Error updating prices: ' + error.message);
-        });
-}
-
-function logoutAdmin() {
-    document.getElementById('editForm').style.display = 'none';
-    document.getElementById('adminPassword').value = '';
-    closeAdminPanel(); 
+        .then(() => alert('Prices updated online!'))
+        .catch((error) => alert('Error: ' + error.message));
 }
 
 function updatePriceDisplays() {
-    // Safety check to make sure elements exist
     if(document.getElementById('papersSpan')) document.getElementById('papersSpan').textContent = currentPrices.papers;
     if(document.getElementById('booksSpan')) document.getElementById('booksSpan').textContent = currentPrices.books;
     if(document.getElementById('cartoonSpan')) document.getElementById('cartoonSpan').textContent = currentPrices.cartoon;
