@@ -6,6 +6,12 @@
     <title>RAKESH SCRAP PAPER SHOP - Buy Scrap at Best Prices</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="contact-buttons">
@@ -182,7 +188,9 @@
         
         <div id="adminPanel" class="admin-panel" style="display: none;">
             <h2>Admin Dashboard</h2>
-            <input type="password" id="adminPassword" placeholder="Enter Password" />
+            <input type="email" id="adminEmail" placeholder="Enter Admin Email" style="margin-bottom: 5px; width: calc(100% - 24px);" />
+            <input type="password" id="adminPassword" placeholder="Enter Admin Password" style="margin-bottom: 5px; width: calc(100% - 24px);" />
+            
             <button onclick="loginAdmin()">Login</button>
             <button onclick="closeAdminPanel()">Close</button>
             
@@ -210,10 +218,5 @@
     <footer>
         <p>© 2025 RAKESH SCRAP PAPER SHOP. ZONE-02, MARKET, SECTOR-02, ROURKELA.</p>
     </footer>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-
-<script src="script.js" defer></script>
 </body>
 </html>
