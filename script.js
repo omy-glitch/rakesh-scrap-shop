@@ -48,8 +48,12 @@ auth.onAuthStateChanged((user) => {
         document.getElementById('editForm').style.display = 'block';
         
         // Hide the login inputs since we are already logged in
-        document.getElementById('adminPassword').style.display = 'none';
-        document.querySelector('button[onclick="loginAdmin()"]').style.display = 'none';
+        if(document.getElementById('adminEmail')) document.getElementById('adminEmail').style.display = 'none';
+        if(document.getElementById('adminPassword')) document.getElementById('adminPassword').style.display = 'none';
+        
+        // Hide the Login button
+        const loginBtn = document.querySelector('button[onclick="loginAdmin()"]');
+        if(loginBtn) loginBtn.style.display = 'none';
         
         loadCurrentPricesToInputs();
     } else {
@@ -59,8 +63,12 @@ auth.onAuthStateChanged((user) => {
         document.getElementById('editForm').style.display = 'none';
         
         // Show login inputs again
-        document.getElementById('adminPassword').style.display = 'inline-block';
-        document.querySelector('button[onclick="loginAdmin()"]').style.display = 'inline-block';
+        if(document.getElementById('adminEmail')) document.getElementById('adminEmail').style.display = 'inline-block';
+        if(document.getElementById('adminPassword')) document.getElementById('adminPassword').style.display = 'inline-block';
+        
+        // Show the Login button
+        const loginBtn = document.querySelector('button[onclick="loginAdmin()"]');
+        if(loginBtn) loginBtn.style.display = 'inline-block';
     }
 });
 
@@ -76,14 +84,20 @@ function closeAdminPanel() {
 }
 
 function loginAdmin() {
+    // Get the email and password you typed
+    const email = document.getElementById('adminEmail').value;
     const password = document.getElementById('adminPassword').value;
-    const email = "admin@rakeshscrap.com"; // HARDCODE YOUR EMAIL HERE (This is safe to show)
+
+    if (!email || !password) {
+        alert("Please enter both email and password.");
+        return;
+    }
     
     // Login with Firebase
     auth.signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
             alert('Welcome back, Admin!');
-            // onAuthStateChanged will handle showing the UI
+            // onAuthStateChanged will handle the UI
         })
         .catch((error) => {
             alert('Login Failed: ' + error.message);
@@ -98,17 +112,17 @@ function logoutAdmin() {
 }
 
 function loadCurrentPricesToInputs() {
-    document.getElementById('papersPrice').value = currentPrices.papers;
-    document.getElementById('booksPrice').value = currentPrices.books;
-    document.getElementById('cartoonPrice').value = currentPrices.cartoon;
-    document.getElementById('glassPrice').value = currentPrices.glass;
-    document.getElementById('ironPrice').value = currentPrices.iron;
-    document.getElementById('tinPrice').value = currentPrices.tin;
-    document.getElementById('aluminiumPrice').value = currentPrices.aluminium;
-    document.getElementById('steelPrice').value = currentPrices.steel;
-    document.getElementById('carBatPrice').value = currentPrices.carBat;
-    document.getElementById('bikeBatPrice').value = currentPrices.bikeBat;
-    document.getElementById('plasticPrice').value = currentPrices.plastic;
+    if(document.getElementById('papersPrice')) document.getElementById('papersPrice').value = currentPrices.papers;
+    if(document.getElementById('booksPrice')) document.getElementById('booksPrice').value = currentPrices.books;
+    if(document.getElementById('cartoonPrice')) document.getElementById('cartoonPrice').value = currentPrices.cartoon;
+    if(document.getElementById('glassPrice')) document.getElementById('glassPrice').value = currentPrices.glass;
+    if(document.getElementById('ironPrice')) document.getElementById('ironPrice').value = currentPrices.iron;
+    if(document.getElementById('tinPrice')) document.getElementById('tinPrice').value = currentPrices.tin;
+    if(document.getElementById('aluminiumPrice')) document.getElementById('aluminiumPrice').value = currentPrices.aluminium;
+    if(document.getElementById('steelPrice')) document.getElementById('steelPrice').value = currentPrices.steel;
+    if(document.getElementById('carBatPrice')) document.getElementById('carBatPrice').value = currentPrices.carBat;
+    if(document.getElementById('bikeBatPrice')) document.getElementById('bikeBatPrice').value = currentPrices.bikeBat;
+    if(document.getElementById('plasticPrice')) document.getElementById('plasticPrice').value = currentPrices.plastic;
 }
 
 function savePrices() {
