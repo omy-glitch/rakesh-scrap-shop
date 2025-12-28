@@ -5,123 +5,210 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAKESH SCRAP PAPER SHOP - Buy Scrap at Best Prices</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- For icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Fixed Call and WhatsApp Buttons (Top-Right) -->
     <div class="contact-buttons">
         <a href="tel:+91-7978470387" class="call-btn"><i class="fas fa-phone"></i> Call</a>
         <a href="https://wa.me/+917978470387" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 
-    <!-- Header with Banner and Shop Info -->
     <header>
-        <img src="imgsrc\banner1.jpeg" alt="RAKESH SCRAP PAPER SHOP Banner" class="banner">
+        <img src="imgsrc/banner2.jpeg" alt="RAKESH SCRAP PAPER SHOP Banner" class="banner">
         <div class="shop-info">
             <h1>RAKESH SCRAP PAPER SHOP</h1>
             <p>Address: ZONE-02, MARKET, SECTOR-02</p>
-            <p>Welcome! We buy scrap papers, iron, plastics & more at daily updated prices. Call us to sell your unused/broken items. contact us directly!</p>
+            <p>Turn your scrap into instant cash! From old newspapers, books, and plastics to heavy metals, electronics, appliances, and scrap vehicles—we buy it all. Get the best daily market rates in Rourkela today!</p>
         </div>
     </header>
 
-    <!-- Items Section -->
     <main class="items-section">
-        <div class="item-card" data-item="papers">
+        
+        <div class="item-card">
             <img src="imgsrc/paper.jpg" alt="Scrap Papers">
             <h3>Scrap Papers</h3>
-            <p class="price" id="papersPriceDisplay">Price: ₹<span id="papersSpan">10</span> per kg</p>
-            <p>Sell your old newspapers, books, or paper waste. High quality accepted.</p>
-            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Call to Sell</a>
+            <p class="item-desc">All types of newspaper, raddi, and waste paper.</p>
+            <p class="price">Price: ₹<span id="papersSpan">10</span>/kg</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
         </div>
 
-        <div class="item-card" data-item="iron">
-            <img src="imgsrc\iron.jpg" alt="Scrap Iron">
+        <div class="item-card">
+            <img src="imgsrc/books.jpeg" alt="Books and Copies">
+            <h3>Book / Copy</h3>
+            <p class="item-desc">All types of school books, notebooks, registers, and copies.</p>
+            <p class="price">Price: ₹<span id="booksSpan">12</span>/kg</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
+        <div class="item-card">
+            <img src="imgsrc/cartoon.jpeg" alt="Cartoon / Cardboard">
+            <h3>Cartoon (Cardboard)</h3>
+            <p class="item-desc">Old carton boxes, packaging cardboard, and heavy brown paper.</p>
+            <p class="price">Price: ₹<span id="cartoonSpan">5</span>/kg</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
+        <div class="item-card">
+            <img src="imgsrc/glass.jpg" alt="Glass / Kaanch">
+            <h3>Kaanch / Glass</h3>
+            <p class="item-desc">Empty glass bottles, beer bottles, and broken window glass.</p>
+            <p class="price">Price: ₹<span id="glassSpan">2</span>/kg</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
+        <div class="item-card">
+            <img src="imgsrc/iron.jpeg" alt="Scrap Iron">
             <h3>Scrap Iron</h3>
-            <p class="price" id="ironPriceDisplay">Price: ₹<span id="ironSpan">20</span> per kg</p>
-            <p>Broken iron items, rods, or metal scraps. We buy all types.</p>
-            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Call to Sell</a>
+            <p class="item-desc">Old iron rods, pipes, broken gates, grills, and heavy iron waste.</p>
+            <p class="price">Price: ₹<span id="ironSpan">20</span>/kg</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
         </div>
 
-        <div class="item-card" data-item="plastic">
+        <div class="item-card">
+            <img src="imgsrc/tin.jpeg" alt="Tin Scrap">
+            <h3>Tin</h3>
+            <p class="item-desc">Oil tins, food cans, Beer cans, light metal sheets, and roof sheets.</p>
+            <p class="price">Price: ₹<span id="tinSpan">15</span>/kg</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
+        <div class="item-card">
+            <img src="imgsrc/aluminium.jpeg" alt="Aluminium">
+            <h3>Aluminium</h3>
+            <p class="item-desc">Aluminium utensils (bartan), window frames, wires, and sheets.</p>
+            <p class="price">Price: ₹<span id="aluminiumSpan">90</span>/kg</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
+        <div class="item-card">
+            <img src="imgsrc/steel.jpeg" alt="Steel">
+            <h3>Steel</h3>
+            <p class="item-desc">Stainless steel utensils, kitchen sinks, pipes, and fittings.</p>
+            <p class="price">Price: ₹<span id="steelSpan">35</span>/kg</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
+        <div class="item-card">
+            <img src="imgsrc/carbattery.jpeg" alt="Car Battery">
+            <h3>Car Battery (Big)</h3>
+            <p class="item-desc">Old car batteries, truck batteries, inverter batteries, and solar batteries.</p>
+            <p class="price">Price: ₹<span id="carBatSpan">80</span>/kg</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
+        <div class="item-card">
+            <img src="imgsrc/bikebattery.jpg" alt="Bike Battery">
+            <h3>Bike / UPS Battery</h3>
+            <p class="item-desc">Bike batteries, scooty batteries, and small UPS lead-acid batteries.</p>
+            <p class="price">Price: ₹<span id="bikeBatSpan">70</span>/kg</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
+        <div class="item-card">
             <img src="imgsrc/plastic.jpeg" alt="Scrap Plastics">
             <h3>Scrap Plastics</h3>
-            <p class="price" id="plasticPriceDisplay">Price: ₹<span id="plasticSpan">15</span> per kg</p>
-            <p>Bottles, bags, or plastic waste. Sorted plastics get better rates.</p>
-            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Call to Sell</a>
+            <p class="item-desc">Plastic bottles, chairs, buckets, pipes, crates, and hard plastic.</p>
+            <p class="price">Price: ₹<span id="plasticSpan">15</span>/kg</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
         </div>
 
-        <div class="item-card" data-item="other">
-            <img src="imgsrc\other.jpeg" alt="Other Scrap">
-            <h3>Other Scrap (Metals, etc.)</h3>
-            <p class="price" id="otherPriceDisplay">Price: ₹<span id="otherSpan">25</span> per kg</p>
-            <p>Electronics, copper, or mixed scrap. Inquire for details.</p>
-            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Call to Sell</a>
+        <div class="item-card">
+            <img src="imgsrc/motor.jpeg" alt="Old Motors">
+            <h3>Motors</h3>
+            <p class="item-desc">Old water pump motors, fan motors, copper winding motors, and dynamos.</p>
+            <p class="price" style="font-size: 1rem; color: #dc3545;">Call us for price details</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
         </div>
+
+        <div class="item-card">
+            <img src="imgsrc/scrapbike.jpeg" alt="Scrap Bike Car">
+            <h3>Damage Bike / Car</h3>
+            <p class="item-desc">Accidental bikes, old scooters, scrap cars, and vehicle parts.</p>
+            <p class="price" style="font-size: 1rem; color: #dc3545;">Call us for price details</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
+        <div class="item-card">
+            <img src="imgsrc/fridge.jpeg" alt="Old Fridge">
+            <h3>Fridge / Refrigerator</h3>
+            <p class="item-desc">Old, non-working, or broken single-door and double-door fridges.</p>
+            <p class="price" style="font-size: 1rem; color: #dc3545;">Call us for price details</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
+        <div class="item-card">
+            <img src="imgsrc/motherboard.jpeg" alt="Motherboard">
+            <h3>Motherboard (E-Waste)</h3>
+            <p class="item-desc">Computer motherboards, green circuit boards, RAM, and processor chips.</p>
+            <p class="price" style="font-size: 1rem; color: #dc3545;">Call us for price details</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
+        <div class="item-card">
+            <img src="imgsrc/tv.jpg" alt="Damaged TV">
+            <h3>Damaged TV (E-Waste)</h3>
+            <p class="item-desc">Old CRT box TVs, broken LED/LCD screens, and computer monitors.</p>
+            <p class="price" style="font-size: 1rem; color: #dc3545;">Call us for price details</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
+        <div class="item-card">
+            <img src="imgsrc/washingmachine.jpg" alt="Washing Machine">
+            <h3>Washing Machine</h3>
+            <p class="item-desc">Top load, front load, semi-automatic, or fully broken washing machines.</p>
+            <p class="price" style="font-size: 1rem; color: #dc3545;">Call us for price details</p>
+            <a href="tel:+91-7978470387" class="item-call-btn"><i class="fas fa-phone"></i> Sell</a>
+        </div>
+
     </main>
 
-    <!-- Google Maps Location Section (Now Clickable) -->
-   <!-- <section class="map-section">
-        <a href="https://maps.app.goo.gl/FHJrLnxVPgbi83PS9" target="_blank" class="map-link">
-            <div class="map-container">
-                <h2><i class="fas fa-map-marker-alt"></i> Our Location</h2>
-                <p>ZONE-02, MARKET, SECTOR-02. Click for full map & directions!</p>
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.123456789!2d77.1025!3d28.7041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDQyJzE1LjQiTiA3N8KwMDYnMDguNSJF!5e0!3m2!1sen!2sin!4v1690000000000!5m2!1sen!2sin" 
-                    width="100%" 
-                    height="400" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </a>
-    </section>
--->
     <section class="map-section">
-  <div class="map-container">
-    <h2><i class="fas fa-map-marker-alt"></i> Our Location</h2>
-    <p>ZONE-02, MARKET, SECTOR-02. Click anywhere for full map & directions!</p>
+      <div class="map-container">
+        <h2><i class="fas fa-map-marker-alt"></i> Our Location</h2>
+        <p>ZONE-02, MARKET, SECTOR-02. Click anywhere for full map & directions!</p>
+        <div class="map-overlay" onclick="window.open('https://maps.app.goo.gl/FHJrLnxVPgbi83PS9', '_blank')"></div>
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.123456789!2d77.1025!3d28.7041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDQyJzE1LjQiTiA3N8KwMDYnMDguNSJF!5e0!3m2!1sen!2sin!4v1690000000000!5m2!1sen!2sin"
+          width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
 
-    <!-- Transparent Click Overlay -->
-    <div class="map-overlay" onclick="window.open('https://maps.app.goo.gl/FHJrLnxVPgbi83PS9', '_blank')"></div>
-
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.123456789!2d77.1025!3d28.7041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDQyJzE1LjQiTiA3N8KwMDYnMDguNSJF!5e0!3m2!1sen!2sin!4v1690000000000!5m2!1sen!2sin"
-      width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-</section>
-
-
-    <!-- Admin Section (Just After Map - Bottom-Left Aligned) -->
     <div class="admin-section">
         <div class="admin-button-container">
             <button id="adminLoginBtn" onclick="showAdminLogin()"><i class="fas fa-user-shield"></i> Admin Login</button>
         </div>
         
-        <!-- Admin Panel (Hidden Inline Below Button) -->
         <div id="adminPanel" class="admin-panel" style="display: none;">
             <h2>Admin Dashboard</h2>
             <input type="password" id="adminPassword" placeholder="Enter Password" />
             <button onclick="loginAdmin()">Login</button>
             <button onclick="closeAdminPanel()">Close</button>
+            
             <div id="editForm" style="display: none;">
                 <h3>Edit Prices (Per Kg in ₹)</h3>
-                <label>Papers: <input type="number" id="papersPrice" /></label><br>
-                <label>Iron: <input type="number" id="ironPrice" /></label><br>
-                <label>Plastics: <input type="number" id="plasticPrice" /></label><br>
-                <label>Other (e.g., Metals): <input type="number" id="otherPrice" /></label><br>
-                <button onclick="savePrices()">Save Changes</button>
-                <button onclick="logoutAdmin()">Logout</button>
+                <div class="admin-grid-inputs">
+                    <label>Paper: <input type="number" id="papersPrice" /></label>
+                    <label>Book/Copy: <input type="number" id="booksPrice" /></label>
+                    <label>Cartoon: <input type="number" id="cartoonPrice" /></label>
+                    <label>Glass: <input type="number" id="glassPrice" /></label>
+                    <label>Iron: <input type="number" id="ironPrice" /></label>
+                    <label>Tin: <input type="number" id="tinPrice" /></label>
+                    <label>Aluminium: <input type="number" id="aluminiumPrice" /></label>
+                    <label>Steel: <input type="number" id="steelPrice" /></label>
+                    <label>Car Battery: <input type="number" id="carBatPrice" /></label>
+                    <label>Bike Battery: <input type="number" id="bikeBatPrice" /></label>
+                    <label>Plastic: <input type="number" id="plasticPrice" /></label>
+                </div>
+                <button onclick="savePrices()" style="width: 100%; margin-top: 15px;">Save Changes</button>
+                <button onclick="logoutAdmin()" style="width: 100%;">Logout</button>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 RAKESH SCRAP PAPER SHOP. ZONE-02, MARKET, SECTOR-02, ROURKELA. Call: +91-7978470387 | WhatsApp: +91-7978470387</p>
+        <p>© 2025 RAKESH SCRAP PAPER SHOP. ZONE-02, MARKET, SECTOR-02, ROURKELA.</p>
     </footer>
 
     <script src="script.js"></script>
